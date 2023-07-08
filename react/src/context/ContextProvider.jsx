@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-useless-escape */
 import { createContext, useContext, useState } from "react";
 
@@ -186,7 +187,6 @@ const tmpSurveys = [
   },
 ];
 
-// eslint-disable-next-line react/prop-types
 export const ContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({
     name: "Tom Cook",
@@ -214,5 +214,4 @@ export const ContextProvider = ({ children }) => {
   );
 };
 
-// eslint-disable-next-line react-hooks/rules-of-hooks, react-refresh/only-export-components
 export const useStateContext = () => useContext(StateContext);
