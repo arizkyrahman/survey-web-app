@@ -94,6 +94,27 @@ export const SurveyView = () => {
               ></textarea>
             </div>
             {/*Description*/}
+
+            {/*Expire Date*/}
+            <div className="col-span-6 sm:col-span-3">
+              <label
+                htmlFor="expire_date"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Expire Date
+              </label>
+              <input
+                type="date"
+                name="expire_date"
+                id="expire_date"
+                value={survey.expire_date}
+                onChange={(ev) =>
+                  setSurvey({ ...survey, expire_date: ev.target.value })
+                }
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-50 focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+            {/*Expire Date*/}
           </div>
         </div>
       </form>
