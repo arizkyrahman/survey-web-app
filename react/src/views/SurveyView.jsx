@@ -73,6 +73,27 @@ export const SurveyView = () => {
               />
             </div>
             {/*Title*/}
+
+            {/*Description*/}
+            <div className="col-span-6 sm:col-span-3">
+              <label
+                htmlFor="description"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Description
+              </label>
+              <textarea
+                name="description"
+                id="description"
+                value={survey.description}
+                onChange={(ev) =>
+                  setSurvey({ ...survey, description: ev.target.value })
+                }
+                placeholder="Describe your survey"
+                className="mt-1 block w-full rounded-md border-gray-300 focus:border-indigo-50 focus:ring-indigo-500 sm:text-sm"
+              ></textarea>
+            </div>
+            {/*Description*/}
           </div>
         </div>
       </form>
