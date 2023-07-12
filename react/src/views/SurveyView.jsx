@@ -19,7 +19,7 @@ export const SurveyView = () => {
       <form action="#" method="post" onSubmit={onSubmit}>
         <div className="shadow sm:overflow-hidden sm:rounded-md">
           <div className="space-y-6 bg-white px-4 py-5 sm:p-6">
-            {/*image*/}
+            {/*Image*/}
             <div>
               <label className="block text-sm font-medium text-gray-700">
                 Photo
@@ -50,7 +50,29 @@ export const SurveyView = () => {
                 </button>
               </div>
             </div>
-            {/*image*/}
+            {/*Image*/}
+
+            {/*Title*/}
+            <div>
+              <label
+                htmlFor="title"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Survey Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="title"
+                value={survey.title}
+                onChange={(ev) =>
+                  setSurvey({ ...survey, title: ev.target.value })
+                }
+                placeholder="Survey Title"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-50 focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+            {/*Title*/}
           </div>
         </div>
       </form>
