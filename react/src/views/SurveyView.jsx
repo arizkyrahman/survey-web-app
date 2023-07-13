@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageComponent from "../components/PageComponent";
 import { PhotoIcon } from "@heroicons/react/24/outline";
+import TButton from "../components/core/TButton";
 
 export const SurveyView = () => {
   const [survey, setSurvey] = useState({
@@ -13,6 +14,15 @@ export const SurveyView = () => {
     expire_date: "",
     questions: [],
   });
+
+  const onImageChoose = () => {
+    console.log("On image Choose");
+  };
+
+  const onSubmit = (ev) => {
+    ev.preventDefault();
+    console.log(ev);
+  };
 
   return (
     <PageComponent title="Create new Survey">
@@ -115,6 +125,34 @@ export const SurveyView = () => {
               />
             </div>
             {/*Expire Date*/}
+
+            {/*Active*/}
+            <div className="flex items-start">
+              <div className="flex h-5 items-center">
+                <input
+                  id="status"
+                  name="status"
+                  type="checkbox"
+                  checked={survey.status}
+                  onChange={(ev) =>
+                    setSurvey({ ...survey, status: ev.target.checked })
+                  }
+                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                />
+              </div>
+              <div className="ml-3 text-sm">
+                <label htmlFor="comments" className="font-medium text-gray-700">
+                  Active
+                </label>
+                <p className="text-gray-500">
+                  Whether to make survey publicy available
+                </p>
+              </div>
+            </div>
+            {/*Active*/}
+          </div>
+          <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+            <TButton>Save</TButton>
           </div>
         </div>
       </form>
