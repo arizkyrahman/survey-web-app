@@ -143,10 +143,10 @@ export default function DefaultLayout() {
                       <UserIcon className="w-8 h-8 bg-black/25 p-1.5 rounded-full text-white" />
                     </div>
                     <div className="ml-3">
-                      <div className="text-base font-medium leading-none text-white">
+                      <div className="text-base font-medium leading-none text-white pb-1">
                         {currentUser.name}
                       </div>
-                      <div className="text-sm font-medium leading-none text-gray-400">
+                      <div className="text-sm font-medium leading-none text-gray-400 pt-1">
                         {currentUser.email}
                       </div>
                     </div>
