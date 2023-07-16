@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios";
+import { useStateContext } from "../context/ContextProvider";
 
 export default function Signup() {
+  const { setCurrentUser, setUserToken } = useStateContext();
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +23,8 @@ export default function Signup() {
         password_confirmation: passwordConfirmation,
       })
       .then(({ data }) => {
-        console.log(data);
+        setCurrentUser(data.user);
+        setUserToken(data.token);
       })
       .catch((error) => {
         if (error.response) {
@@ -71,6 +74,8 @@ export default function Signup() {
                 name="name"
                 type="text"
                 required
+                value={fullName}
+                onChange={(ev) => setFullName(ev.target.value)}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -89,6 +94,8 @@ export default function Signup() {
                 type="email"
                 autoComplete="email"
                 required
+                value={email}
+                onChange={(ev) => setEmail(ev.target.value)}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -110,6 +117,8 @@ export default function Signup() {
                 type="password"
                 autoComplete="current-password"
                 required
+                value={password}
+                onChange={(ev) => setPassword(ev.target.value)}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
@@ -130,6 +139,8 @@ export default function Signup() {
                 name="password_confirmation"
                 type="password"
                 required
+                value={passwordConfirmation}
+                onChange={(ev) => setPasswordConfirmation(ev.target.value)}
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
               />
             </div>
