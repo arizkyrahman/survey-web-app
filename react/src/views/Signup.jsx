@@ -1,16 +1,63 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import axiosClient from "../axios";
 
 export default function Signup() {
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [error, setError] = useState({ __html: "" });
+
+  const onSubmit = (ev) => {
+    ev.preventDefault();
+    setError({ __html: "" });
+
+    axiosClient
+      .post("/signup", {
+        name: fullName,
+        email,
+        password,
+        password_confirmation: passwordConfirmation,
+      })
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          const finalErrors = Object.values(error.response.data.errors).reduce(
+            (accum, next) => [...accum, ...next],
+            []
+          );
+          console.log(finalErrors);
+          setError({ __html: finalErrors.join("<br>") });
+        }
+        console.error(error);
+      });
+  };
+
   return (
     <>
       <div>
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign up for free
         </h2>
+
+        {error.__html && (
+          <div
+            className="bg-red-500 rounded py-2 px-3 text-white"
+            dangerouslySetInnerHTML={error}
+          ></div>
+        )}
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" action="#" method="POST">
+        <form
+          onSubmit={onSubmit}
+          className="space-y-6"
+          action="#"
+          method="POST"
+        >
           <div>
             <label
               htmlFor="full-name"
