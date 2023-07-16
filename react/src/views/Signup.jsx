@@ -42,19 +42,19 @@ export default function Signup() {
         <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Sign up for free
         </h2>
-
-        {error.__html && (
-          <div
-            className="bg-red-500 rounded py-2 px-3 text-white"
-            dangerouslySetInnerHTML={error}
-          ></div>
-        )}
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+        {error.__html && (
+          <div
+            className="bg-red-500 rounded-md py-2 px-3 text-white"
+            dangerouslySetInnerHTML={error}
+          ></div>
+        )}
+
         <form
           onSubmit={onSubmit}
-          className="space-y-6"
+          className="space-y-6 pt-2"
           action="#"
           method="POST"
         >
